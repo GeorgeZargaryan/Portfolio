@@ -19,5 +19,5 @@ Main idea is to realize many projects I was thinking about and merge in one big 
 > - HTML
 > - CSS (BootStrap)
 > - PHP (Pure, untill I learn Laravel)
-> - JS (DOM, WebSocket)
+> - JS (DOM) (May be Node and Ajax)
 > - MySQL 
