@@ -4,10 +4,6 @@ html{
 
 body{
     height: 100vh;
-    background-image: url('../assets/backgrounds/background_1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 /* colorPalette Index
     #000000; #14213D; #FCA311; #E5E5E5; #FFFFFF;
@@ -18,19 +14,35 @@ body{
     color: white;
 }
 
-.SignIn{
+#signInDiv{
+    display: flex;
+}
+
+#signUpDiv{
+    display: none;
+}
+
+.SignTo{
     position: absolute;
     top: 50%;
     left: 50.7%;
     transform: translate(-50%,-50%);
-    width: 100%
+    width: 100%;
+}
+
+.SignTo input{
+    padding: 4px 6px;
+}
+
+.SignTo input:focus-visible{
+    outline: none;
 }
 
 .SignInTitle{
     font-size: 2rem;
 }
 
-.signinDiv{
+.signInBlock{
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -49,7 +61,20 @@ body{
     border-color: #005F73;
 }
     
+.cardLink{
+    margin: 0 auto;
+    width: auto;
+}
 
+.cardLink:hover{
+    color: rgb(2, 74, 175);
+}
+
+.signUpBlock{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
 
 
 
@@ -87,15 +112,13 @@ body{
     color: #fff; 
     text-decoration: none;
     transition: all ease-in-out .3s;
+    font-size: calc(1.375rem + 1.5vw);
+    margin-bottom: 0;
 }
 
 .logoDemo:hover{
     color: #94D2BD; 
     transition: all ease-in-out .3s;
-}
-
-.logoDemo h1{
-    margin-bottom: 0;
 }
 
 .navbarListBtn{

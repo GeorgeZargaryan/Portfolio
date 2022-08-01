@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style.css">
-    <title>To-Do | Portfolio</title>
+    <title>To-Do | Pluvia</title>
 
 </head>
 
