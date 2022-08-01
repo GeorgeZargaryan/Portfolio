@@ -5,7 +5,6 @@ Thats just repository for my portfolio page.
 
 > - To-Do List,
 > - Basic chat,
-> - Basic Shop App,
 > - E.T.C
 
 #How does it work
