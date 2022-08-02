@@ -12,12 +12,18 @@
 
 </head>
 
-<body style="background-image: url('../assets/backgrounds/background_1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-    <h1 class="logoIndex">Logo</h1>
+<body name="indexBody" style="background-image: url('../assets/backgrounds/background_1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <h1 class="logoIndex">Pluvia</h1>
+    <nav class="row" style="width: 100%;">
+        <div class="col-4"></div>
+        <div class="col-5"></div>
+    <div class="themeSwitch col-3">
+        <a onclick="changeTheme(1)" class="changeToDark" id="themeChangeBtn">Dark Theme</a>
+    </nav>
     <div class="row SignTo">
         <div class="col-3"></div>
         <div class="card card-body col-5" id="signInDiv">
-            <p class="SignInTitle text-center">SignIn</p>
+            <p class="SignInTitle text-center">Welcome</p>
             <form action="../controllers/SignIn.php" method="POST">
                 <div class="signInBlock">
                     <label for="SignInEmail">Email:</label>
@@ -73,7 +79,7 @@
             <a class="text-center cardLink" href="#" onclick="openSignUp()">SignUp</a>
         </div>
         <div class="card card-body col-5" id="signUpDiv">
-            <p class="SignInTitle text-center">SignUp</p>
+            <p class="SignInTitle text-center">Create Account</p>
             <form action="../controllers/SignUp.php" method="POST">
                 <div class="signUpBlock">
                     <label for="SignUpEmail">Email:</label>

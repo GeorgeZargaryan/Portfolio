@@ -14,6 +14,28 @@ body{
     color: white;
 }
 
+.changeToDark{
+    padding: 8px 10px;
+    border: 2px solid #005F73;
+    border-radius: .375rem;
+    background: #005F73;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: all ease-in-out .3s;
+}
+
+.changeToDark:hover{
+    transition: all ease-in-out .3s;
+    color: #94D2BD;
+}
+
+.themeSwitch{
+    display: flex;
+    justify-content: center;
+}
+
 #signInDiv{
     display: flex;
 }
@@ -76,6 +98,15 @@ body{
     margin-bottom: 10px;
 }
 
+/* home  */
+
+.footerWrap{
+    background:#005F73;
+}
+
+.footerWrap ul{
+    margin-bottom: 5px;
+}
 
 
 
