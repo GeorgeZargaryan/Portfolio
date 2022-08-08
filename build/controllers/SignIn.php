@@ -10,7 +10,7 @@ if (isset($checkEmail) && isset($hashPass)) {
     if ($result) {
         $row = $result->fetch_assoc();
         session_start();
-        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['userId'] = $row['user_id'];
         $_SESSION['theme'] = $row['theme'];
         header("Location: ../views/home.php");
         exit();

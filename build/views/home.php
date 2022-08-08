@@ -2,7 +2,7 @@
 require_once('../model/db.php');
 session_start();
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['userId'];
 $theme = $_SESSION['theme'];
 ?>
 <!DOCTYPE html>
@@ -21,25 +21,25 @@ $theme = $_SESSION['theme'];
     <section>
         <header class="headerWrap fixed-top">
             <div class="container navbarList pt-2 pb-2">
-                <a href="#" class="logoDemo">Pluvia</a>
+                <a href="projects.php" class="logoDemo">Pluvia</a>
                 <ul class="d-flex flex-row navbarListUl">
                     <li><a href="profile.php" class="navbarListBtn">Profile</a></li>
-                    <li><a href="#" class="navbarListBtn">About Us</a></li>
+                    <li><a id="aboutBtn"href="#" class="navbarListBtn">About Us</a></li>
                     <li><a href="../controllers/signOut.php" class="navbarListBtn">Sign Out</a></li>
+                    <li><a href="to-do.php" class="navbarListBtn" >To-Do</a></li>
                 </ul>
-
             </div>
         </header>
     </section>
 
-    <section>
+    <section style="height:2000px;">
 
     </section>
 
     <section>
-        <footer class="footerWrap fixed-bottom">
+        <footer class="footerWrap">
             <div class="container pt-2 pb-2 d-flex flex-row justify-content-around">
-                <div class="footerFAQ d-flex flex-column">
+                <div class="footerFAQ d-flex flex-column text-center">
                     <ul>
                         <li><a href="#">Why is this Created?</a></li>
                         <li><a href="#">Why is this Created?</a></li>
@@ -63,6 +63,7 @@ $theme = $_SESSION['theme'];
             </div>
         </footer>
     </section>
+    <script src="../scripts/script.js"></script>
 </body>
 
 </html>

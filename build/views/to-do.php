@@ -1,8 +1,9 @@
 <?php
-    session_start();
-    require_once("../model/db.php");
+session_start();
+require_once("../model/db.php");
 
-    $userId = $_SESSION['user_id'];
+$userId = $_SESSION['userId'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
                 </a>
                 <ul class="d-flex flex-row navbarListUl">
                     <li><a href="index.php" class="navbarListBtn">Home</a></li>
-                    <li><a href="#" class="navbarListBtn">About</a></li>
+                    <li><a onclick="openAddList()" class="navbarListBtn">Add List</a></li>
                     <li><a href="#" class="navbarListBtn">Sign Out</a></li>
                 </ul>
 
@@ -39,36 +40,40 @@
                 <div class="card card-body text-center col-md-4 toDoClickable">
                     <p>Title</p>
                     <span>Bio</span>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#toDoModal">
-                        Launch demo modal
-                    </button>
+                    <button onclick="openToDo(0)">Open</button>
                 </div>
             </div>
         </div>
 
-        <!-- modal opens-->
-        <div class="modal fade" id="toDoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+        <div class="modalForToDo">
+            <div class="ToDoHead">
+
+            </div>
+            <div class="ToDoBody">
+                <div class="ToDoList">
+
                 </div>
+
             </div>
         </div>
-        <!-- modal closes -->
-
     </section>
+
+    <div class="addListCard" id="addListCard">
+        <div class="addListConatiner">
+            <div class="addListHeader">
+                <h2>CreateList</h2>
+                <a href="#" id="closeModalAdd"><img src="../assets/icons/close.png" alt="x" style="width: 40px; height: 40px;"></a>
+            </div>
+            <div class="addListBody">
+                <form action="#" method="POST">
+                    <input type="text" id="inputList" placeholder="Enter list name">
+                    <input type="text" id="inputList" placeholder="Enter list bio">
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/todo.js"></script>
     <script src="../style/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
