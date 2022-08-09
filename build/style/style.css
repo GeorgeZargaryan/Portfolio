@@ -189,6 +189,7 @@ a{
 
 .toDoClickable{
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .addListCard{
@@ -200,7 +201,6 @@ a{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
@@ -229,10 +229,54 @@ a{
     to {top: 0; opacity: 1}
 }
 
+@-webkit-keyframes animatebot {
+    from {top:0; opacity:1} 
+    to {top:-300px; opacity:0}
+}
+
+@keyframes animatebot {
+    from {top: 0; opacity: 1}
+    to {top: -300px; opacity: 0}
+}
+
 .addListHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
+}
+
+.addListHeader h2{
+    margin: 0;
+}
+
+.addListInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addListInputs input{
+    margin-bottom: .8rem;
+    padding: 4px 5px;
+    width: 80%;
+}
+
+.submitBtn{
+    background: none;
+    border: 2px #005F73 solid;
+    padding: 8px 10px;
+    font-size: 1rem;
+    color: #005F73;
+    border-radius: .375rem;
+    transition: all ease-in-out .3s;
+}
+
+.submitBtn:hover,
+.submitBtn:focus{
+    background: #005F73;
+    color: white;
+    transition: all ease-in-out .3s;
 }
 
 #closeModalAdd{
@@ -243,3 +287,60 @@ a{
     height: 40px;
 }
 
+.toDoList{
+    width: 33%;
+}
+
+.toDoCreateAlertDiv{
+    position:absolute;
+    z-index: 1;
+    display: block;
+    width:50%;
+    left: 25%;
+}
+
+.toDoCreateAlert{
+    position: relative;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.6s;
+    animation-name: animatetop;
+    animation-duration: 0.6s
+}
+
+
+.modalForToDo{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.toDoListContent{
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: .375rem;
+    width: 40%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.6s;
+    animation-name: animatetop;
+    animation-duration: 0.6s   
+}
+
+.toDoBody{
+    width: 33%;
+    height: calc(100% - 1rem);
+}
+
+.toDoHead{
+    width: fit-content;
+    margin: 0 auto;
+}

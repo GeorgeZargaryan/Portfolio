@@ -4,9 +4,12 @@
 //     $sql
 // }
 
-function AddList($conn, $userId, $listName, $listBio){
-    $sql = "INSERT INTO ToDoLists(toDoList_name, toDoList_bio, toDoList_owner) Values('$listName', '$listBio' , $userId)";
-    mysqli_query($conn, $sql);
+function openList($conn, $listId){
+
+    $sql = "SELECT toDoItem_id, toDoItem_content, toDoItem_state FROM ToDoItems WHERE toDoItem_list = $listId";
+    $result = mysqli_query($conn,$sql);
+
+    return mysqli_fetch_assoc($result);
 }
 
 ?>
