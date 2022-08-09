@@ -1,4 +1,5 @@
 # Portfolio
+
 Thats just repository for my portfolio page.
 
 ## It'll contain
@@ -22,6 +23,7 @@ Main idea is to realize many projects I was thinking about and merge in one big 
 > - MySQL 
 
 # Project installation
+
 You're also able to run this awesome project on your own machine.
 
 ## Requirements
@@ -36,15 +38,11 @@ You're also able to run this awesome project on your own machine.
 1. Clone the repository.
 
 ```
-$ git clone https://github.com/GeorgeZargaryan/Portfolio-Pluvia
+$ git clone https://github.com/GeorgeZargaryan/Portfolio-Pluvia.git
 ```
 
 2. Setup the Apache server and set the root of it to `Pluvia`.
 
 3. Create a database and name it `Pluvia` then get the `database.sql` file and import it to the MySQL database.
 
-4. Change your working directory to the `socket-server` folder, and run the `npm install` command.
-
-5. Run the `npm start` command to start the WebSocket server.
-
-6. Done, TUMO Chat is ready to use.
+4. Done, TUMO Chat is ready to use.
