@@ -41,8 +41,8 @@ You're also able to run this awesome project on your own machine.
 $ git clone https://github.com/GeorgeZargaryan/Portfolio-Pluvia.git
 ```
 
-2. Setup the Apache server and set the root of it to `Pluvia`.
+2. Setup the Apache server and set the root of it to `Portfolio-Pluvia`.
 
-3. Create a database and name it `Pluvia` then get the `database.sql` file and import it to the MySQL database.
+3. Create a database and name it `Portfolio-Pluvia` then get the `DataBase.sql` file and import it to the MySQL database.
 
 4. Done, TUMO Chat is ready to use.
