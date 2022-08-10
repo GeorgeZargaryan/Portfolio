@@ -24,7 +24,7 @@
         <div class="col-3"></div>
         <div class="card card-body col-5" id="signInDiv">
             <p class="SignInTitle text-center">Welcome</p>
-            <form action="../controllers/SignIn.php" method="POST">
+            <form action="../controllers/signIn.php" method="POST">
                 <div class="signInBlock">
                     <label for="SignInEmail">Email:</label>
                     <input type="email" name="SignInEmail" id="SignInEmail" class="form-label" placeholder="yourmail@smth.smt" required>
@@ -80,7 +80,7 @@
         </div>
         <div class="card card-body col-5" id="signUpDiv">
             <p class="SignInTitle text-center">Create Account</p>
-            <form action="../controllers/SignUp.php" method="POST">
+            <form action="../controllers/signUp.php" method="POST">
                 <div class="signUpBlock">
                     <label for="SignUpEmail">Email:</label>
                     <input type="email" name="SignUpEmail" id="SignUpEmail" class="form-label" placeholder="yourmail@smth.smt" required>

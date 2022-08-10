@@ -1,11 +1,12 @@
 <?php
-session_start();
-require_once("../model/db.php");
+    session_start();
+    require_once("../model/db.php");
+    require_once('../model/functions.php');
 
-$userId = $_SESSION['userId'];
+    $userId = $_SESSION['userId'];
 
 
-$selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color FROM toDoLists WHERE toDoList_owner = $userId";
+    $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color FROM toDoLists WHERE toDoList_owner = $userId";
 
 
 
@@ -20,10 +21,31 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
     <link rel="stylesheet" href="../style/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style.css">
     <title>To-Do | Pluvia</title>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 
 </head>
 
 <body style="background-image: url('../assets/backgrounds/0.png');">
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('a#openList').click(function() {
+            // console.log("hiii");
+            
+            var listID = $(this).attr('name');
+            // console.log(listID)
+            $.ajax({
+                url: '../controllers/getListInfo.php?list=' + listID,
+                type: 'GET',
+                dataType :"JSON",
+                data: '',
+                success: function(data) {
+                    
+
+                }
+            });
+        });
+    });
+    </script>
     <section>
         <header class="headerWrap fixed-top">
             <div class="container navbarList pt-2 pb-2">
@@ -56,16 +78,17 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
                     </div>
                 <?php } ?>
             </div>
-            <?php } ?>
+        <?php } ?>
         <div class="container pb-3 d-flex flex-wrap ">
             <?php
             $result = mysqli_query($conn, $selectLists);
-
+            
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) { ?>
-
+                    
                     <div class="toDoList pb-3 pe-3 pr-3">
-                        <a onclick="openToDo(); getListInfo(<?= $row['toDoList_id']?>);">
+                        <a id="openList" name="<?= $row['toDoList_id'] ?>" onclick="openToDo()">
+                            <?php var_dump(getListInfo($conn, $row['toDoList_id'])); ?>
                             <div class="card card-body text-center  toDoClickable">
                                 <p><?= $row['toDoList_name'] ?></p>
                                 <span><?= $row['toDoList_bio'] ?></span>
@@ -80,15 +103,14 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 
         <div class="modalForToDo" id="modalForToDo">
             <div class="toDoListContent" id="toDoListContent">
-            <div class="toDoHead">
-                hello
-            </div>
-            <div class="toDoBody">
+                <div class="toDoHead">
+                </div>
+                <div class="toDoBody">
 
-            </div>
-            <div class="toDoFooter">
+                </div>
+                <div class="toDoFooter">
 
-            </div>
+                </div>
             </div>
         </div>
 
