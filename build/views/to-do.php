@@ -1,12 +1,12 @@
 <?php
-    session_start();
-    require_once("../model/db.php");
-    require_once('../model/functions.php');
+session_start();
+require_once("../model/db.php");
+require_once('../model/functions.php');
 
-    $userId = $_SESSION['userId'];
+$userId = $_SESSION['userId'];
 
 
-    $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color FROM toDoLists WHERE toDoList_owner = $userId";
+$selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color FROM toDoLists WHERE toDoList_owner = $userId";
 
 
 
@@ -27,56 +27,59 @@
 
 <body style="background-image: url('../assets/backgrounds/0.png');">
     <script type="text/javascript">
-        $(function(){
-        $('a#openList').click(function() {
-            // console.log("hiii");
-            
-            var listID = $(this).attr('name');
-            // console.log(listID)
-            $.ajax({
-                url: '../controllers/getListInfo.php?list=' + listID,
-                data: '',
-                dataType :"JSON",
-                success: function(data) {
-                    let listBody = document.getElementById('toDoBody');
-                    console.log(data);
-                    if(data.length > 1){
-                        data.forEach(element => {
-                            console.log(element);
-                            let listItem = document.createElement('div');
-                            let inputText = document.createElement('input');
-                            let inputCheck = document.createElement('input');
-                            listItem.classList.add('item_content','d-flex');
-                            inputCheck.setAttribute('type', 'checkbox');
-                            inputText.setAttribute('id', element.toDoItem_id);
-                            inputText.setAttribute('type', 'text');
-                            inputText.setAttribute('id', 'listItem');
-                            inputText.setAttribute('value', element.toDoItem_content);
-                            listItem.appendChild(inputCheck);
-                            listItem.appendChild(inputText);
-                            listBody.appendChild(listItem);
-                        });
-                        let addItemBtn = document.createElement('a')
-                        let plusIcon = document.createElement('img')
-                        let addItem = document.createElement('div')
-                        plusIcon.setAttribute('src', '../assets/icons/plus.png')
-                        addItemBtn.setAttribute('href','#')
-                        addItem.classList.add('item_content','d-flex')
-                        plusIcon.classList.add('plusIcon')
-                        addItemBtn.innerText = 'Add New'
-                        addItem.appendChild(plusIcon)
-                        addItem.appendChild(addItemBtn)
-                        listBody.appendChild(addItem)
-                        console.log('2')
-                    }
-                    console.log('1')
+        $(function() {
+            $('a#openList').click(function() {
+                // console.log("hiii");
 
-                }
+                var listID = $(this).attr('name');
+                // console.log(listID)
+                $.ajax({
+                    url: '../controllers/getListInfo.php?list=' + listID,
+                    data: '',
+                    dataType: "JSON",
+                    success: function(data) {
+                        let listBody = document.getElementById('toDoBody');
+                        // console.log(data);
+                        if (data.length > 1) {
+
+                            data.forEach(element => {
+                                // console.log(element);
+                                let listItem = document.createElement('div');
+                                let inputText = document.createElement('textarea');
+                                let inputCheck = document.createElement('input');
+                                listItem.classList.add('item_content', 'd-flex');
+                                inputCheck.setAttribute('type', 'checkbox');
+                                inputCheck.setAttribute('class', 'listCheckbox');
+                                // inputText.setAttribute('type', 'text');
+                                inputText.setAttribute('class', 'listItem');
+                                inputText.setAttribute('onChange', 'ChangeInsertValue(this)');
+                                inputText.setAttribute('id', 'listNum' + element.toDoItem_id);
+                                inputText.innerText = element.toDoItem_content;
+                                listItem.appendChild(inputCheck);
+                                listItem.appendChild(inputText);
+                                listBody.appendChild(listItem);
+                            });
+
+                            let addItemBtn = document.createElement('a')
+                            let plusIcon = document.createElement('img')
+                            let addItem = document.createElement('div')
+                            plusIcon.setAttribute('src', '../assets/icons/plus.png')
+                            addItemBtn.setAttribute('href', '#')
+                            addItemBtn.setAttribute('id', 'addItemBtn')
+                            addItem.classList.add('item_content', 'd-flex')
+                            plusIcon.classList.add('plusIcon')
+                            addItemBtn.innerText = 'Add New'
+                            addItem.appendChild(plusIcon)
+                            addItem.appendChild(addItemBtn)
+                            listBody.appendChild(addItem)
+                        }
+                        addItemBtn.addEventListener('click', () => {
+
+                        })
+                    }
+                });
             });
         });
-    });
-    let inputs = document.querySelectorAll('#listItem');
-
     </script>
     <section>
         <header class="headerWrap fixed-top">
@@ -114,7 +117,7 @@
         <div class="container pb-3 d-flex flex-wrap ">
             <?php
             $result = mysqli_query($conn, $selectLists);
-            
+
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) { ?>
 
@@ -136,7 +139,8 @@
             <div class="toDoListContent" id="toDoListContent">
                 <div class="toDoHead" id="toDoHead">
 
-                <a href="#" id="closeList" ><img src="../assets/icons/close.png" alt="x" style="width: 40px; height: 40px; flex:1;"></a>
+                    <a href="#" id="closeList"><img src="../assets/icons/close.png" alt="x" style="width: 40px; height: 40px; flex:1;"></a>
+                    <div id="right"></div>
                 </div>
                 <div class="toDoBody" id="toDoBody">
 

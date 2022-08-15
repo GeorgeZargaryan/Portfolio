@@ -336,15 +336,44 @@ a{
 }
 
 .toDoBody{
-    width: 33%;
     height: calc(100% - 1rem);
 }
 
 .toDoHead{
     display: flex;
+    margin-bottom: 1rem;
+}
+
+.toDoName{
+    margin: 0;
+}
+
+.listItem{
+    width: 100%;
+    border: none;
+    height: fit-content;
+    padding: 0;
+    padding-left: 5px;
+    border-left: 2px solid rgba(0, 0, 0, .55);
+    outline: none;
+    resize: none;
+    overflow: none;
+}
+ 
+.item_content{
+    margin-bottom: 7px;
+}
+
+.listCheckbox{
+    margin-right: 5px;
 }
 
 .plusIcon{
     width: 1rem;
     height: 1rem;
+}
+
+#closeList,
+#right {
+    flex: 1;
 }
