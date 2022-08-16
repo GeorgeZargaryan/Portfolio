@@ -26,61 +26,6 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 </head>
 
 <body style="background-image: url('../assets/backgrounds/0.png');">
-    <script type="text/javascript">
-        $(function() {
-            $('a#openList').click(function() {
-                // console.log("hiii");
-
-                var listID = $(this).attr('name');
-                // console.log(listID)
-                $.ajax({
-                    url: '../controllers/getListInfo.php?list=' + listID,
-                    data: '',
-                    dataType: "JSON",
-                    success: function(data) {
-                        let listBody = document.getElementById('toDoBody');
-                        // console.log(data);
-                        if (data.length > 1) {
-
-                            data.forEach(element => {
-                                // console.log(element);
-                                let listItem = document.createElement('div');
-                                let inputText = document.createElement('textarea');
-                                let inputCheck = document.createElement('input');
-                                listItem.classList.add('item_content', 'd-flex');
-                                inputCheck.setAttribute('type', 'checkbox');
-                                inputCheck.setAttribute('class', 'listCheckbox');
-                                // inputText.setAttribute('type', 'text');
-                                inputText.setAttribute('class', 'listItem');
-                                inputText.setAttribute('onChange', 'ChangeInsertValue(this)');
-                                inputText.setAttribute('id', 'listNum' + element.toDoItem_id);
-                                inputText.innerText = element.toDoItem_content;
-                                listItem.appendChild(inputCheck);
-                                listItem.appendChild(inputText);
-                                listBody.appendChild(listItem);
-                            });
-
-                            let addItemBtn = document.createElement('a')
-                            let plusIcon = document.createElement('img')
-                            let addItem = document.createElement('div')
-                            plusIcon.setAttribute('src', '../assets/icons/plus.png')
-                            addItemBtn.setAttribute('href', '#')
-                            addItemBtn.setAttribute('id', 'addItemBtn')
-                            addItem.classList.add('item_content', 'd-flex')
-                            plusIcon.classList.add('plusIcon')
-                            addItemBtn.innerText = 'Add New'
-                            addItem.appendChild(plusIcon)
-                            addItem.appendChild(addItemBtn)
-                            listBody.appendChild(addItem)
-                        }
-                        addItemBtn.addEventListener('click', () => {
-
-                        })
-                    }
-                });
-            });
-        });
-    </script>
     <section>
         <header class="headerWrap fixed-top">
             <div class="container navbarList pt-2 pb-2">
@@ -161,8 +106,8 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
             </div>
             <div class="addListBody">
                 <form action="../controllers/createList.php" method="POST" class="addListInputs">
-                    <input type="text" id="inputList" name="listName" placeholder="Enter list name" required minlength="3">
-                    <input type="text" id="inputList" name="listBio" placeholder="Enter list bio" required minlength="3">
+                    <input type="text" id="inputList" name="listName" placeholder="Enter list name" required minlength="3" >
+                    <input type="text" id="inputList" name="listBio" placeholder="Enter list bio" >
                     <button type="submit" class="submitBtn">Create</button>
                 </form>
             </div>

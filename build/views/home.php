@@ -32,8 +32,13 @@ $theme = $_SESSION['theme'];
         </header>
     </section>
 
-    <section style="height:2000px;">
-
+    <section style="height:2000px; margin-top: 75px;">
+    <form action="../controllers/addItem.php" method="post">
+  <input type="text" name="itemContent" value="mydata" />
+  <input type="text" name="toDoState" value="1" />
+  <input type="text" name="listId" value="8" />
+  <input type="submit"/>
+        </form>
     </section>
 
     <section>
