@@ -68,8 +68,9 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 
                     <div class="toDoList pb-3 pe-3 pr-3">
                         <a id="openList" name="<?= $row['toDoList_id'] ?>" onclick="openToDo(<?= $row['toDoList_id'] ?>)">
-                            <div class="card card-body text-center  toDoClickable">
+                            <div class="card card-body text-center toDoClickable" id="<?= $row['toDoList_id']?>">
                                 <h3 id="<?= $row['toDoList_id'] ?>"><?= $row['toDoList_name'] ?></h3>
+                                    <a href="#" class="deleteList" id="DltL<?= $row['toDoList_id'] ?>"><img src="../assets/icons/close.png" alt="x" class="deleteImg" ></a>
                                 <span><?= $row['toDoList_bio'] ?></span>
                             </div>
                         </a>
@@ -91,7 +92,12 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 
                 </div>
                 <div class="toDoFooter">
+                <div class="leftSide">
+                    
+                </div>
+                <div class="rightSide">
 
+                </div>
                 </div>
             </div>
         </div>
