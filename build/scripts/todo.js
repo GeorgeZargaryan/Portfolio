@@ -37,7 +37,6 @@ deleteList.forEach((element) => {
 deleteBtn.addEventListener("click", (element) => {
   id = element.target.name;
   id = id.substr(10);
-  console.log(id);
   $.ajax({
     type: "POST",
     url: "../controllers/deleteList.php",
@@ -96,7 +95,7 @@ function changeState(event) {
   let id = event.name;
   let insert = document.getElementById("listNum" + id);
   let text = insert.value.replace(/\s/g, "");
-  console.log(text);
+
   text != ""
     ? event.checked == true
       ? insert.classList.replace("undone", "done")
@@ -114,7 +113,6 @@ function changeState(event) {
 
 function openToDo(id) {
   modalList.style.display = "block";
-  console.log(id);
   let name = document.getElementById("ListTitle" + id);
   let Lname = document.createElement("h3");
   Lname.classList.add("toDoName");
@@ -134,9 +132,7 @@ window.onload = () => {
   });
 
   $("div.toDoClickable").click(function () {
-    console.log("1");
     var listID = $(this).attr("id");
-    console.log(listID);
     openToDo(listID);
 
     $.ajax({
