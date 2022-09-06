@@ -66,20 +66,26 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) { ?>
 
-                    <div class="toDoList pb-3 pe-3 pr-3">
-                        <a id="openList" name="<?= $row['toDoList_id'] ?>" onclick="openToDo(<?= $row['toDoList_id'] ?>)">
-                            <div class="card card-body text-center toDoClickable" id="<?= $row['toDoList_id']?>">
-                                <h3 id="<?= $row['toDoList_id'] ?>"><?= $row['toDoList_name'] ?></h3>
-                                    <a href="#" class="deleteList" id="DltL<?= $row['toDoList_id'] ?>"><img src="../assets/icons/close.png" alt="x" class="deleteImg" ></a>
-                                <span><?= $row['toDoList_bio'] ?></span>
-                            </div>
-                        </a>
+                    <div class="toDoList pb-3 pe-3 pr-3" id='List<?= $row['toDoList_id'] ?>'>
+                        <a href="#" class="deleteList" id="DltL<?= $row['toDoList_id'] ?>"><img src="../assets/icons/close.png" alt="x" class="deleteImg"></a>
+                        <div class="card card-body text-center toDoClickable" id="<?= $row['toDoList_id'] ?>">
+                            <h3 id="ListTitle<?= $row['toDoList_id'] ?>"><?= $row['toDoList_name'] ?></h3>
+                            <span><?= $row['toDoList_bio'] ?></span>
+                        </div>
                     </div>
             <?php  }
             }
             ?>
         </div>
 
+        <div class="modalDelete" id="modalDelete">
+            <div class="deleteModalContent card">
+                    <h1>Delete Account</h1>
+                    <p>Are you sure you want to delete your account?</p>
+                        <a id="DeleteBtn" class="deleteBtn">Delete</a>
+                    <a href="">Cancel</a>
+            </div>
+        </div>
 
         <div class="modalForToDo" id="modalForToDo">
             <div class="toDoListContent" id="toDoListContent">
@@ -92,12 +98,12 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 
                 </div>
                 <div class="toDoFooter">
-                <div class="leftSide">
-                    
-                </div>
-                <div class="rightSide">
+                    <div class="leftSide">
 
-                </div>
+                    </div>
+                    <div class="rightSide">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,8 +118,8 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
             </div>
             <div class="addListBody">
                 <form action="../controllers/createList.php" method="POST" class="addListInputs">
-                    <input type="text" id="inputList" name="listName" placeholder="Enter list name" required minlength="3" >
-                    <input type="text" id="inputList" name="listBio" placeholder="Enter list bio" >
+                    <input type="text" id="inputList" name="listName" placeholder="Enter list name" required minlength="3">
+                    <input type="text" id="inputList" name="listBio" placeholder="Enter list bio">
                     <button type="submit" class="submitBtn">Create</button>
                 </form>
             </div>

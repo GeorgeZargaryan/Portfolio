@@ -1,11 +1,11 @@
+// const { Button } = require("bootstrap");
+
 var addListModal = document.getElementById("addListCard");
 var closeAddBtn = document.querySelector("#closeModalAdd");
 var addListInputs = document.querySelectorAll("#inputList");
 
 var toDoAlert = document.querySelector("#toDoCreateAlert");
 var toDoAlertDiv = document.querySelector("#toDoCreateAlertDiv");
-
-var deleteList = document.querySelectorAll(".deleteList");
 
 var modalList = document.querySelector("#modalForToDo");
 var ListHeader = document.getElementById("toDoHead");
@@ -15,8 +15,39 @@ var listBody = document.getElementById("toDoBody");
 var ListItems = document.querySelectorAll(".listItem");
 var rightHeader = document.getElementById("right");
 
+var deleteList = document.querySelectorAll(".deleteList");
+let deleteBtn = document.getElementById("DeleteBtn");
+let deleteModal = document.getElementById("modalDelete");
+
 deleteList.forEach((element) => {
-  element.addEventListener("click", {});
+  element.addEventListener("mouseover", () => {
+    element.style.display = "block";
+  });
+  element.addEventListener("mouseout", () => {
+    element.style.display = "none";
+  });
+
+  element.addEventListener("click", () => {
+    id = element.parentElement.id;
+    deleteBtn.name = "Delete" + id;
+    deleteModal.style.display = "block";
+  });
+});
+
+deleteBtn.addEventListener("click", (element) => {
+  id = element.target.name;
+  id = id.substr(10);
+  console.log(id);
+  $.ajax({
+    type: "POST",
+    url: "../controllers/deleteList.php",
+    data: { lI: id },
+    success: function (result) {
+      console.log("success!!!!!!!!");
+    },
+  });
+  document.getElementById(id).remove();
+  deleteModal.style.display ='none';
 });
 
 function openAddList() {
@@ -41,20 +72,10 @@ if (toDoAlertDiv) {
 function closeAlert() {
   setTimeout(() => {
     toDoAlert.style.animationName = "animatebot";
-  }, 7000);
+  }, 5000);
   setTimeout(() => {
     toDoAlertDiv.style.display = "none";
-  }, 7100);
-}
-
-function openToDo(id) {
-  modalList.style.display = "block";
-  // console.log(id);
-  let name = document.getElementById(id);
-  let Lname = document.createElement("h3");
-  Lname.classList.add("toDoName");
-  Lname.innerText = name.innerText;
-  ListHeader.insertBefore(Lname, rightHeader);
+  }, 5100);
 }
 
 function ChangeInsertValue(event) {
@@ -62,7 +83,6 @@ function ChangeInsertValue(event) {
   id = id.substr(7);
   let insert = document.getElementById("listNum" + id);
   let valueToChange = insert.value;
-  // insert.value = valueToChange;
 
   $.ajax({
     type: "POST",
@@ -71,6 +91,7 @@ function ChangeInsertValue(event) {
     success: function (result) {},
   });
 }
+
 function changeState(event) {
   let id = event.name;
   let insert = document.getElementById("listNum" + id);
@@ -91,19 +112,32 @@ function changeState(event) {
   });
 }
 
-window.onload = () => {
-  let lists = document.querySelectorAll('.toDoClickable');
-  lists.forEach((element)=>{
-    element.addEventListener('mouseover',()=>{
-      document.getElementById('DltL' + element.id).style.display = "block";
-    })
-    element.addEventListener('mouseout',()=>{
-      document.getElementById('DltL' + element.id).style.display = "none";
+function openToDo(id) {
+  modalList.style.display = "block";
+  console.log(id);
+  let name = document.getElementById("ListTitle" + id);
+  let Lname = document.createElement("h3");
+  Lname.classList.add("toDoName");
+  Lname.innerText = name.innerText;
+  ListHeader.insertBefore(Lname, rightHeader);
+}
 
-    })
-  })
-  $("a#openList").click(function () {
-    var listID = $(this).attr("name");
+window.onload = () => {
+  let lists = document.querySelectorAll(".toDoClickable");
+  lists.forEach((element) => {
+    element.addEventListener("mouseover", () => {
+      document.getElementById("DltL" + element.id).style.display = "block";
+    });
+    element.addEventListener("mouseout", () => {
+      document.getElementById("DltL" + element.id).style.display = "none";
+    });
+  });
+
+  $("div.toDoClickable").click(function () {
+    console.log("1");
+    var listID = $(this).attr("id");
+    console.log(listID);
+    openToDo(listID);
 
     $.ajax({
       url: "../controllers/getListInfo.php?list=" + listID,
@@ -217,11 +251,3 @@ function createNew(listId) {
     });
   });
 }
-
-// ListItems.forEach((element)=>{
-//     element.valueChanges.subscribe(value => {
-//         element.style.height = 'auto';
-//         element.style.height = `${element.scrollHeight}px`;
-//         console.log('1')
-//     });
-// })
