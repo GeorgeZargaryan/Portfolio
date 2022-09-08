@@ -49,6 +49,10 @@ deleteBtn.addEventListener("click", (element) => {
   deleteModal.style.display ='none';
 });
 
+document.getElementById('closeDeleteModal').addEventListener('click', ()=>{
+  deleteModal.style.display = 'none';
+})
+
 function openAddList() {
   addListModal.style.display = "block";
 }

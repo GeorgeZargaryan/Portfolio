@@ -79,11 +79,11 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
         </div>
 
         <div class="modalDelete" id="modalDelete">
-            <div class="deleteModalContent card">
-                    <h1>Delete Account</h1>
-                    <p>Are you sure you want to delete your account?</p>
-                        <a id="DeleteBtn" class="deleteBtn">Delete</a>
-                    <a href="">Cancel</a>
+            <div class="deleteModalContent">
+                <h2>Delete Account</h2>
+                <p>Are you sure you want to delete your account?</p>
+                <a id="DeleteBtn" class="deleteBtn">Delete</a>
+                <a id="closeDeleteModal">Cancel</a>
             </div>
         </div>
 
@@ -92,7 +92,9 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
                 <div class="toDoHead" id="toDoHead">
 
                     <a href="#" id="closeList"><img src="../assets/icons/close.png" alt="x" style="width: 40px; height: 40px; flex:1;"></a>
-                    <div id="right"></div>
+                    <div id="right">
+                        <a><img src="../assets/icons/setting.png" alt="" style="width: 35px; height:35px;"></a>
+                    </div>
                 </div>
                 <div class="toDoBody" id="toDoBody">
 
@@ -102,7 +104,6 @@ $selectLists = "SELECT toDoList_id, toDoList_name, toDoList_bio, toDoList_color 
 
                     </div>
                     <div class="rightSide">
-
                     </div>
                 </div>
             </div>
