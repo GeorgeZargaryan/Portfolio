@@ -8,7 +8,7 @@ Thats just repository for my portfolio page.
 > - Basic chat,
 > - E.T.C
 
-#How does it work
+# How does it work
 
 ## Main idea
 
