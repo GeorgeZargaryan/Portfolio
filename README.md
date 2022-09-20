@@ -45,4 +45,4 @@ $ git clone https://github.com/GeorgeZargaryan/Portfolio-Pluvia.git
 
 3. Create a database and name it `Portfolio-Pluvia` then get the `DataBase.sql` file and import it to the MySQL database.
 
-4. Done, TUMO Chat is ready to use.
+4. Done, Portfolio-Pluvia is ready to use.
